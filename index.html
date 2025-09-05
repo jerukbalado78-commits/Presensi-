@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Presensi Manual</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 20px;
+    }
+    h2 {
+      color: darkblue;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 20px;
+    }
+    table, th, td {
+      border: 1px solid black;
+      text-align: center;
+      padding: 8px;
+    }
+    th {
+      background-color: lightblue;
+    }
+  </style>
+</head>
+<body>
+  <h2>Presensi Manual</h2>
+
+  <input type="text" id="nama" placeholder="Masukkan Nama">
+  <button onclick="absen()">Absen</button>
+
+  <table>
+    <thead>
+      <tr>
+        <th>No</th>
+        <th>Nama</th>
+        <th>Waktu Absen</th>
+      </tr>
+    </thead>
+    <tbody id="tabelPresensi">
+    </tbody>
+  </table>
+
+  <script>
+    let nomor = 1;
+
+    function absen() {
+      const nama = document.getElementById("nama").value;
+      if (nama === "") {
+        alert("Isi dulu nama kamu!");
+        return;
+      }
+
+      const waktu = new Date().toLocaleTimeString();
+      const tabel = document.getElementById("tabelPresensi");
+
+      const row = tabel.insertRow();
+      row.insertCell(0).innerText = nomor++;
+      row.insertCell(1).innerText = nama;
+      row.insertCell(2).innerText = waktu;
+
+      document.getElementById("nama").value = "";
+    }
+  </script>
+</body>
+</html>
